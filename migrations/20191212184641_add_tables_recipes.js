@@ -25,6 +25,9 @@ exports.up = function(knex) {
             .unsigned()
             .notNullable();
 
+         tbl.string('instruction', 255)
+            .notNullable();
+         
          tbl.integer('recipe_id')
             .unsigned()
             .references('id')
@@ -50,6 +53,12 @@ exports.up = function(knex) {
             .inTable('ingredients')
             .onUpdate('CASCADE')
             .onDelete('CASCADE');
+
+         tbl.string('units', 128)
+            .notNullable();
+         
+         tbl.float('quantity')
+            .notNullable();
       })
 };
 
